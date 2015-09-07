@@ -5,3 +5,4 @@ prediction_app/cancer.data
 prediction_app/cancer.html
 prediction_app/cancer_app.py
 prediction_app/clean_2014_2015_data.pkl
+prediction_app/clean_recent_data.pkl
