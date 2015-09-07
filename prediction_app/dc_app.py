@@ -12,7 +12,7 @@ from sklearn.linear_model import LogisticRegression
 
 # Read the scientific data on breast cancer survival,
 # Build a LogisticRegression predictor on it
-df = pd.DataFrame(pickle.load(open('clean_2014_2015_data.pkl', 'rb')))
+df = pd.DataFrame(pickle.load(open('clean_recent_data.pkl', 'rb')))
 
 y, X = dmatrices(
     'RESP ~ primary_focus_area + primary_focus_subject + np.log(total_price_including_optional_support + np.sqrt(students_reached))',
