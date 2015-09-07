@@ -21,7 +21,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 import pickle
 
-df = pd.DataFrame(pickle.load(open('clean_2014_2015_data.pkl', 'rb')))
+df = pd.DataFrame(pickle.load(open('clean_recent_data.pkl', 'rb')))
 print "Done reading dataframe"
 
 
