@@ -5,24 +5,36 @@ import pandas as pd
 import pickle
 from patsy import dmatrices
 from sklearn import preprocessing
-from sklearn.linear_model import LogisticRegression
-
 
 #---------- MODEL IN MEMORY ----------------#
 
-# Read the scientific data on breast cancer survival,
-# Build a LogisticRegression predictor on it
-df = pd.DataFrame(pickle.load(open('clean_recent_data.pkl', 'rb')))
+patients = pd.DataFrame(pickle.load(open('dummied_data.pkl', 'rb')))
+patients.columns=['price_ex',
+ 'price_in',
+ 'students',
+ 'RESP',
+ 'Applied Learning',
+ 'Health & Sports',
+ 'History & Civics',
+ 'Literacy & Language',
+ 'Math & Science',
+ 'Music & The Arts',
+ 'Special Needs']
 
-y, X = dmatrices(
-    'RESP ~ primary_focus_area + primary_focus_subject + np.log(total_price_including_optional_support + np.sqrt(students_reached))',
-    data=df, return_type='dataframe')
 
-y = np.ravel(y)
+X = patients[['price_ex',
+ 'price_in',
+ 'students',
+ 'Applied Learning',
+ 'Health & Sports',
+ 'History & Civics',
+ 'Literacy & Language',
+ 'Math & Science',
+ 'Music & The Arts',
+ 'Special Needs']]
+Y = patients['RESP']
+PREDICTOR = LogisticRegression().fit(X,Y)
 
-std_scale = preprocessing.StandardScaler().fit(X)
-X = std_scale.transform(X)
-PREDICTOR = LogisticRegression().fit(X,y)
 
 
 #---------- URLS AND WEB PAGES -------------#
@@ -34,7 +46,7 @@ app = flask.Flask(__name__)
 @app.route("/")
 def viz_page():
     """
-    Homepage: serve our visualization page, dc_prediction.html
+    Homepage: serve our visualization page
     """
     with open("dc_prediction.html", 'r') as viz_file:
         return viz_file.read()
@@ -57,6 +69,6 @@ def score():
 
 #--------- RUN WEB APP SERVER ------------#
 
-# Start the app server on port 5000
+# Start the app server on port 5000 (change to 80 when loaded to AWS?)
 # (The default website port)
 app.run(host='0.0.0.0', port=5000)
