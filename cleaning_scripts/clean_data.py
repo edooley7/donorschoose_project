@@ -11,7 +11,7 @@ print "Done reading csv"
 
 # Pickle dump currently live projects as hold out set for final testing
 live_df = df[df['funding_status'] == 'live']
-with open('live.pkl', 'w') as live_file:
+with open('../data_files/live.pkl', 'w') as live_file:
     pickle.dump(live_df, live_file)
 print "Done creating live set"
 
@@ -63,9 +63,12 @@ print "Done add previous projects features"
 df2.students_reached += 1
 df2.total_price_excluding_optional_support += 1
 df2.total_price_including_optional_support += 1
+df2.vendor_shipping_charges += 1
+df2.vendor_shipping_charges = df2.vendor_shipping_charges.replace(np.nan, df2.vendor_shipping_charges.mean())
 df2['log_price_including'] = np.log(df2.total_price_including_optional_support)
 df2['log_price_excluding'] = np.log(df2.total_price_excluding_optional_support)
 df2['sqrt_students_reached'] = np.sqrt(df2.students_reached)
+df2['log_vendor_shipping'] = np.log(df2.vendor_shipping_charges)
 print "Done transforming continuous features"
 
 # Using teacher prefix to get teacher gender
@@ -82,10 +85,10 @@ df2['price_per_student'] = df2.total_price_including_optional_support / df2.stud
 print "Done calculating project price per student"
 
 # Binning
-df2['student_bins'] = pd.qcut(df2['students_reached'], 10)
-df2['price_in_bins'] = pd.qcut(df2['total_price_including_optional_support'], 10)
-df2['price_ex_bins'] = pd.qcut(df2['total_price_excluding_optional_support'], 10)
-df2['price_per_student_bins'] = pd.qcut(df2['price_per_student'], 20)
+df2['student_bins'] = pd.qcut(df2['students_reached'], 10, labels = False)
+df2['price_in_bins'] = pd.qcut(df2['total_price_including_optional_support'], 10, labels = False)
+df2['price_ex_bins'] = pd.qcut(df2['total_price_excluding_optional_support'], 10, labels = False)
+df2['price_per_student_bins'] = pd.qcut(df2['price_per_student'], 10, labels = False)
 print "Done binning stuff"
 
 # Adding state features (average number of donors per project in each state)
@@ -101,7 +104,6 @@ df2['state_avg_donors'] = df2.total_state_donors / df2.total_state_projects
 print "Done adding state features"
 
 # Dropping unnecessary columns and cleaning up missing values
-df2.vendor_shipping_charges = df2.vendor_shipping_charges.replace(np.nan, df2.vendor_shipping_charges.mean())
 df3 = df2[['_projectid',
            '_teacher_acctid',
            '_schoolid',
@@ -154,6 +156,6 @@ final_remaining = len(df3) / len(df2)
 print "Percent of remaining data still remaining: %0.2f" % (final_remaining * 100)
 
 print "Pickling"
-with open('cleaned_data_with_features.pkl', 'wb') as picklefile:
+with open('../data_files/cleaned_data_with_features.pkl', 'wb') as picklefile:
     pickle.dump(df3, picklefile)
 print "DONE"
