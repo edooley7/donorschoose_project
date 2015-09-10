@@ -5,47 +5,40 @@
     <title>Prediction Wizard</title>
     <link rel="stylesheet" href="static/d3.slider.css" />
     <style>
-
      body {
        font-family: Verdana,Arial,sans-serif;
      }
-
      h2 {
        font-size: 1.2em;
        margin: 60px 0 5px 0;
        color: #808080
      }
-
      .space {
        margin-bottom: 20 px;
      }
-
      .wrapper {
        width: 800px;
        margin-left: auto;
        margin-right: auto;
        margin-bottom: 0px;
      }
-
      #bar_chart {
        margin-bottom: 0 px;
      }
-
      .bar {
        fill: #f36f21;
      }
-
      span {
        color: #41c4e4;
      }
-
     </style>
   </head>
 
   <body>
 
+
     <div id="chart_area" class="wrapper">
-      <h2>Probability of Project Succeeding</h2>
+      <h2>Probability of project getting fully funded</h2>
       <p class="space"></p>
       <div id="bar_chart">
       </div>
@@ -53,69 +46,53 @@
 
     <div id="sliders" class="wrapper">
 
-      <h2 class="feature">Total price of project: <span id="price">200</span></h2>
-      <div id="price_slider"></div>
+      <h2 class="feature">Price excluding: <span id="age">25</span></h2>
+      <div id="age_slider"></div>
 
-      <h2 class="feature">Number of students reached: <span id="students">100</span></h2>
-      <div id="students_slider"></div>
+      <h2 class="feature">Price including: <span id="year">2010</span></h2>
+      <div id="year_slider"></div>
+
+      <h2 class="feature">Students Reached: <span id="nodes">1</span></h2>
+      <div id="nodes_slider"></div>
+
+      <h2 class="feature">Subject: <span id="subject">Applied Learning</span></h2>
+      <select id="subjectSelect">
+      	<option value="1,0,0,0,0,0,0">Applied Learning</option>
+      	<option value="0,1,0,0,0,0,0">Health & Sports</option>
+      	<option value="0,0,1,0,0,0,0">History & Civics</option>
+      	<option value="0,0,0,1,0,0,0">Literacy & Language</option>
+      	<option value="0,0,0,0,1,0,0">Math & Science</option>
+      	<option value="0,0,0,0,0,1,0">Music & The Arts</option>
+      	<option value="0,0,0,0,0,0,1">Special Needs</option>
+      </select>
     </div>
-
-	<div id ="dropdown" class = "wrapper">
-		<p class="space"></p>
-      <h2 class="feature">Primary Focus Area: <span id="area">Math & Science</span></h2>
-	<select id="select-list">
-  		<option value="Math & Science">Math & Science</option> 
-  		<option value="Literacy">Literacy</option>
-  		<option value="Reading">Reading</option>
-	</select>
-	</div>
-
-
-	<div id ="dropdown2" class = "wrapper">
-		<p class="space"></p>
-      <h2 class="feature">Primary Focus Subject: <span id="subject">Technology</span></h2>
-	<select id="select-list">
-  		<option value="Technology">Technology</option> 
-  		<option value="blah">blah</option>
-  		<option value="blah2">blah</option>
-	</select>
-	</div>
 
     <!-- Import the libraries: jQuery, d3, d3.slider -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="static/d3.v3.js"></script>
     <script src="static/d3.slider.js"></script>
 
     <script>
-
      <!-- SINGLE BAR CHART -->
-
-     var current_price = 200;
-     var current_students = 100;
-     var current_area = "Math & Science"
-     var current_focus = "Technology";
-     
+     var current_age = 25;
+     var current_year = 2010;
+     var current_nodes = 30;
      var current_risk = 97.0;
-
+     var current_subject = $("#subjectSelect").val();
      var chart = d3.select("#bar_chart")
                    .append("svg:svg")
                    .attr("width", 800)
                    .attr("height", 100);
-
      var chance_scale = d3.scale.linear()
                                 .domain([0, 100])
                                 .range([0, 800]);
-
      var bar = chart.append("g")
                     .attr("class", "bar")
-    
- 
        bar.append("svg:rect")
           .attr("id", "chancebar")
           .attr("class", "bar")
           .attr("width", chance_scale(current_risk))
           .attr("height", 50);
-
      bar.append("text")
         .attr("id", "percent_text")
         .attr("dy", ".75em")
@@ -125,18 +102,17 @@
         .attr("fill", "white")
         .attr("font-size", 20)
         .text( current_risk.toFixed(1) + "%");
-
-
+        
      <!-- FUNCTION TO GET CHANCE FROM YOUR PREDICTOR WITH AJAX AND CHANGE BAR  HEIGHT -->
-     function getAndDrawChance(price, students, subject, area){
-
+     function getAndDrawChance(age, year, nodes, subject) {
+       year = year - 1900;
        $.ajax({
          type: "POST",
          contentType: "application/json; charset=utf-8",
          url: "/score",
          dataType: "json",
          async: true,
-         data: "{\"example\": ["+price+","+students+","+subject+","+area+"]}",
+         data: "{\"example\": ["+age+","+year+","+nodes+","+subject+"]}",
          success: function (data) {
            var chance = 100 * data["score"];
            d3.select("#chancebar")
@@ -149,47 +125,52 @@
          }
        })
      }
-
-
+     
+     $("#subjectSelect")
+     .change(function() {
+       current_subject = $(this).val();
+       var subject_name = $("#subjectSelect option:selected").text()
+       document.getElementById("subject").textContent=subject_name;
+       getAndDrawChance(current_age, current_year, current_nodes, current_subject);
+     });
+       
      <!-- SLIDERS -->
-     d3.select("#select-list")
-     .value(current_area)
-     .on("change", function(value) {
-             d3.select('#area').text(value);
-             current_area = value;
-             getAndDrawChance(current_price, current_students, current_area, current_subject)
-           }
-       );
-
-
-     d3.select('#price_slider')
+     d3.select('#age_slider')
        .call(
          d3.slider()
-           .value(current_price)
-           .min(0)
-           .max(50000)
-           .step(100)
+           .value(current_age)
+           .step(1)
            .axis(true)
            .on("slide", function(evt,value) {
-             d3.select('#price').text(value);
-             current_price = value;
-             getAndDrawChance(current_price, current_students, current_area, current_subject)
+             d3.select('#age').text(value);
+             current_age = value;
+             getAndDrawChance(current_age, current_year, current_nodes, current_subject)
            }
            )
        );
-
-     d3.select('#students_slider')
+     d3.select('#year_slider')
        .call(
          d3.slider()
-           .value(current_students)
-           .min(0)
-           .max(5000)
-           .step(10)
+           .value(current_year)
+           .step(1)
            .axis(true)
            .on("slide", function(evt,value) {
-             d3.select('#students').text(value);
-             current_students = value;
-             getAndDrawChance(current_price, current_students, current_area, current_subject)
+             d3.select('#year').text(value);
+             current_year = value;
+             getAndDrawChance(current_age, current_year, current_nodes, current_subject)
+           }
+           )
+       );
+     d3.select('#nodes_slider')
+       .call(
+         d3.slider()
+           .value(current_nodes)
+           .step(1)
+           .axis(true)
+           .on("slide", function(evt,value) {
+             d3.select('#nodes').text(value);
+             current_nodes = value;
+             getAndDrawChance(current_age, current_year, current_nodes, current_subject)
            }
            )
        );
