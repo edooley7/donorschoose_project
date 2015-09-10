@@ -6,3 +6,10 @@ prediction_app/cancer.html
 prediction_app/cancer_app.py
 prediction_app/clean_2014_2015_data.pkl
 prediction_app/clean_recent_data.pkl
+prediction_app/dummied_data.pkl
+prediction_app/static/d3.v3.js
+prediction_app/test.html
+prediction_app/test.py
+trees.pdf
+
+
