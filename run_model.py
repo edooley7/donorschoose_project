@@ -26,7 +26,7 @@ df = pd.DataFrame(pickle.load(open('data_files/dummied_recent_data.pkl', 'rb')))
 print "Done reading dataframe"
 
 X = df[[
-
+ 'month',
  'log_price_including',
  'sqrt_students_reached',
  'price_per_student',
@@ -85,10 +85,11 @@ X = df[[
 y = df[['RESP']]
 
 y = np.ravel(y)
-
+"""
 std_scale = preprocessing.StandardScaler().fit(X)
 X = std_scale.transform(X)
 print "Done scaling"
+"""
 
 x_train, x_test, y_train, y_test = train_test_split(
     X, y, test_size=0.25, random_state=7)
