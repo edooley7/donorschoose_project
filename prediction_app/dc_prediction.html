@@ -13,13 +13,24 @@
        margin: 40px 0 5px 0;
        color: #808080
      }
-        h1 {
+     h1 {
        font-size: 1em;
        margin: 20px 0 2px 0;
        color: black
      }
+     #left_side {
+		float: left;
+     }
+     #right_side {
+		float: right;
+     }
+	.table{
+		display: table;
+		margin-left: auto;
+        margin-right: auto;
+	 }
      .space {
-       margin-bottom: 0 px;
+        margin-bottom: 0 px;
      }
      .wrapper {
        width: 800px;
@@ -36,17 +47,16 @@
      span {
        color: #41c4e4;
      }
-        span2 {
+     span2 {
        color: #f36f21;
      }
     </style>
   </head>
+  
+<body>
 
-  <body>
-
-
+<div class = "table">
     <div id="sliders" class="wrapper">
-
       <h2 class="feature">Total price of project: <span id="price">500</span></h2>
       <div id="price_slider"></div>
 
@@ -61,9 +71,10 @@
       
       <h2 class="feature">Number of previous projects by teacher: <span id="teacher">1</span></h2>
       <div id="teacher_slider"></div>
-
-          
-      <h2 class="feature">Subject: <span id="subject">Applied Sciences</span></h2>
+	</div>
+	
+    <div id = "left_side">    
+      <h2>Subject: <span id="subject">Applied Sciences</span></h2>
       <select id="subjectSelect">
       	<option value="1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Applied Sciences</option>
       	<option value="0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Character Education</option>
@@ -93,31 +104,36 @@
       	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0">Special Needs</option>
       	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0">Team Sports</option>
       	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1">Visual Arts</option>
+	  </select>
 
-      </select>
-      
-      <h2 class="feature">Poverty level of school: <span id="poverty">Highest Poverty</span></h2>
+    
+      <h2>Poverty level of school: <span id="poverty">Highest Poverty</span></h2>
       <select id="povertySelect">
       	<option value="0,1,0,0">Highest Poverty</option>
       	<option value="1,0,0,0">High Poverty</option>
       	<option value="0,0,0,1">Moderate Poverty</option>
       	<option value="0,0,1,0">Low Poverty</option>
-	 </select>
+	  </select>
 
-      <h2 class="feature">Grade Level: <span id="grade">Grades Pre K-2</span></h2>
+
+      <h2>Grade Level: <span id="grade">Grades Pre K-2</span></h2>
       <select id="gradeSelect">
         <option value="0,0,0,1">Grades Pre K-2</option>
       	<option value="1,0,0,0">Grades 3-5</option>
       	<option value="0,1,0,0">Grades 6-8</option>
       	<option value="0,0,1,0">Grades 9-12</option>
-    </select>
-      <h2 class="feature">School metro area: <span id="metro">Urban</span></h2>
+      </select>
+	</div>
+    	 
+    <div id = "right_side">    
+      <h2>School metro area: <span id="metro">Urban</span></h2>
       <select id="metroSelect">
         <option value="0,0,1">Urban</option>
       	<option value="0,1,0">Suburban</option>
       	<option value="1,0,0">Rural</option>
-    </select>
-      <h2 class="feature">Resource Type: <span id="resource">Books</span></h2>
+      </select>
+      
+      <h2>Resource Type: <span id="resource">Books</span></h2>
       <select id="resourceSelect">
         <option value="1,0,0,0,0,0">Books</option>
       	<option value="0,0,1,0,0,0">Supplies</option>
@@ -125,20 +141,76 @@
       	<option value="0,0,0,0,1,0">Trips</option>
       	<option value="0,0,0,0,0,1">Visitors</option>
       	<option value="0,1,0,0,0,0">Other</option>
-      	</select>
-        </div>
+      </select>
+      
+      <h2>State: <span id="state">AK</span></h2>
+      <select id="stateSelect">
+        <option value="8185,2065,3.96368038741">AK</option>
+		<option value="28333,8000,3.541625">AL</option>
+		<option value="24909,7869,3.16545939764">AR</option>
+		<option value="65953,12910,5.10867544539">AZ</option>
+		<option value="800185,157654,5.07557689624">CA</option>
+		<option value="48013,9132,5.25766535261">CO</option>
+		<option value="47062,9763,4.82044453549">CT</option>
+		<option value="38429,7814,4.91796775019">DC</option>
+		<option value="11997,2153,5.5722248026">DE</option>
+		<option value="207663,41090,5.05385738623">FL</option>
+		<option value="98427,22454,4.38349514563">GA</option>
+		<option value="16302,3769,4.32528522154">HI</option>
+		<option value="16242,4164,3.90057636888">IA</option>
+		<option value="13681,3061,4.46945442666">ID</option>
+		<option value="206034,48378,4.25883666129">IL</option>
+		<option value="87593,21452,4.0832090248">IN</option>
+		<option value="15311,3796,4.03345626976">KS</option>
+		<option value="24608,6023,4.08567159223">KY</option>
+		<option value="54087,15102,3.58144616607">LA</option>
+		<option value="77629,13341,5.81882917323">MA</option>
+		<option value="67169,12052,5.57326584799">MD</option>
+		<option value="21188,4467,4.7432281173">ME</option>
+		<option value="83680,16955,4.93541728104">MI</option>
+		<option value="33452,6163,5.4278760344">MN</option>
+		<option value="69536,15652,4.4426271403">MO</option>
+		<option value="28799,8677,3.31900426415">MS</option>
+		<option value="6764,1273,5.31343283582">MT</option>
+		<option value="175217,51352,3.41207742639">NC</option>
+		<option value="3006,642,4.68224299065">ND</option>
+		<option value="8056,2041,3.94708476237">NE</option>
+		<option value="10597,1985,5.33853904282">NH</option>
+		<option value="63941,13332,4.79605460546">NJ</option>
+		<option value="16229,3450,4.70405797101">NM</option>
+		<option value="36643,10738,3.41246042093">NV</option>
+		<option value="334846,85457,3.91829809144">NY</option>
+		<option value="54147,10957,4.94177238295">OH</option>
+		<option value="59916,19119,3.13384591244">OK</option>
+		<option value="44807,9167,4.88785862332">OR</option>
+		<option value="96404,19262,5.00488007476">PA</option>
+		<option value="12409,2712,4.5755899705">RI</option>
+		<option value="73372,23273,3.15266617969">SC</option>
+		<option value="6471,1389,4.65874730022">SD</option>
+		<option value="99405,17909,5.55056117036">TN</option>
+		<option value="194700,52912,3.67969458724">TX</option>
+		<option value="36404,11980,3.0387312187">UT</option>
+		<option value="68194,14485,4.70790472903">VA</option>
+		<option value="4214,772,5.4585492228">VT</option>
+		<option value="101334,15047,6.73449857114">WA</option>
+		<option value="43842,9285,4.72180936995">WI</option>
+		<option value="12952,3116,4.15661103979">WV</option>
+		<option value="2588,553,4.67992766727">WY</option>
+      </select>
+    </div>
+</div>
 
-  <div id="chart_area" class="wrapper">
+    <div id="chart_area" class="wrapper">
       <h2>Will my project get funded?</h2>
       <div id="bar_chart">
       </div>
     </div>
     
     <div id = "text" class = "wrapper">
-    <h2> Want to improve your chances of getting funded? A great essay can help.</h>
-    <h2> Here's what some other teachers with projects similar to yours wrote to get funded:</h>
-	<h1 id="neighbor_text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sollicitudin ac odio in feugiat. Ut blandit ex a nunc ornare volutpat. Phasellus congue sodales venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed sollicitudin lacus orci, et pharetra urna ultrices eu. Donec eu sollicitudin ante. Aliquam risus ipsum, vestibulum eget malesuada sit amet, hendrerit ac neque. Aliquam vehicula, nisl vitae bibendum blandit, justo nibh rutrum mauris, non rutrum nibh nisl sit amet massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit."</h1>
-	<h2> Readability score: <span id="readability">10</span></h2>
+		<h2> Want to improve your chances of getting funded? A great essay can help.</h>
+		<h2> Here's what some other teachers with projects similar to yours wrote to get funded:</h>
+		<h1 id="neighbor_text"></h1>
+		<h2> Readability score: <span id="neighbor_readability">10</span></h2>
 	</div>
 
 <div id="textbox" class="wrapper">	
@@ -172,7 +244,7 @@
      var current_resource = $("#resourceSelect").val();
      var current_subject = $("#subjectSelect").val();
      var current_price_per_student = current_price / current_students;
-     var extra1 = ["334846.0","85457.0","3.918298091437799"];
+     var current_state = $("#stateSelect").val();
      
      var chart = d3.select("#bar_chart")
                    .append("svg:svg")
@@ -210,19 +282,18 @@
 				 url: "/grade_essay",
 				 dataType: "json",
 				 async: true,
-				 //data: "{\"essay\": " + essay + ", \"example\": ["+current_school+", "+current_teacher+", "+current_month+", "+current_price+","+current_students+","+current_price_per_student+", "+extra1+", "+current_subject+", "+current_poverty+", "+current_grade+", "+current_metro+", "+current_resource+"]}",
-				 data: "{\"essay\": \"" + essay + "\", \"example\": ["+current_school+", "+current_teacher+", "+current_month+", "+current_price+","+current_students+","+current_price_per_student+", "+extra1+", "+current_subject+", "+current_poverty+", "+current_grade+", "+current_metro+", "+current_resource+"]}",
+				 data: "{\"essay\": \"" + essay + "\", \"example\": ["+current_school+", "+current_teacher+", "+current_month+", "+current_price+","+current_students+","+current_price_per_student+", "+current_state+", "+current_subject+", "+current_poverty+", "+current_grade+", "+current_metro+", "+current_resource+"]}",
 				 success: function (data) {
                  	$("#essay_readability").html(data.readability);
 				 },
-				error: function (result) { }
+				error: function (result) {alert('Please leave out line breaks') }
 			   })
 		});
 	});
     
          
 	<!-- FUNCTION TO GET CHANCE FROM YOUR PREDICTOR WITH AJAX AND CHANGE BAR  HEIGHT -->
-	function getAndDrawChance(school, teacher, month, price, students, price_per_student, extra1, subject, poverty, grade, metro, resource) {
+	function getAndDrawChance(school, teacher, month, price, students, price_per_student, state, subject, poverty, grade, metro, resource) {
 
        var students = Math.sqrt(students);
        
@@ -235,9 +306,11 @@
          url: "/score",
          dataType: "json",
          async: true,
-         data: "{\"example\": ["+school+", "+teacher+", "+month+", "+price+","+students+","+price_per_student+", "+extra1+", "+subject+", "+poverty+", "+grade+", "+metro+", "+resource+"]}",
+         data: "{\"example\": ["+school+", "+teacher+", "+month+", "+price+","+students+","+price_per_student+", "+current_state+", "+subject+", "+poverty+", "+grade+", "+metro+", "+resource+"]}",
          success: function (data) {
-          $("#neighbor_text").html(data.project_text)
+          $("#neighbor_text").html(data.project_text);
+          $("#neighbor_readability").html(data.user_readability);
+
            var chance = 100 * data["score"];
            d3.select("#chancebar")
              .attr("width", chance_scale(chance));
@@ -249,13 +322,20 @@
        })
      }
     
+    $("#stateSelect")
+     .change(function() {
+       current_state = $(this).val();
+       var state_name = $("#stateSelect option:selected").text()
+       document.getElementById("state").textContent=state_name;
+       getAndDrawChance(current_school, current_teacher, current_month, current_price, current_students, current_price_per_student, current_state, current_subject, current_poverty, current_grade, current_metro, current_resource);
+     }); 
     
     $("#povertySelect")
      .change(function() {
        current_poverty = $(this).val();
        var poverty_name = $("#povertySelect option:selected").text()
        document.getElementById("poverty").textContent=poverty_name;
-       getAndDrawChance(current_school, current_teacher, current_month, current_price, current_students, current_price_per_student, extra1, current_subject, current_poverty, current_grade, current_metro, current_resource);
+       getAndDrawChance(current_school, current_teacher, current_month, current_price, current_students, current_price_per_student, current_state, current_subject, current_poverty, current_grade, current_metro, current_resource);
      }); 
     
     $("#gradeSelect")
@@ -263,7 +343,7 @@
        current_grade = $(this).val();
        var grade_name = $("#gradeSelect option:selected").text()
        document.getElementById("grade").textContent=grade_name;
-       getAndDrawChance(current_school, current_teacher, current_month, current_price, current_students, current_price_per_student, extra1, current_subject, current_poverty, current_grade, current_metro, current_resource);
+       getAndDrawChance(current_school, current_teacher, current_month, current_price, current_students, current_price_per_student, current_state, current_subject, current_poverty, current_grade, current_metro, current_resource);
      }); 
     
     $("#metroSelect")
@@ -271,7 +351,7 @@
        current_metro = $(this).val();
        var metro_name = $("#metroSelect option:selected").text()
        document.getElementById("metro").textContent=metro_name;
-       getAndDrawChance(current_school, current_teacher, current_month, current_price, current_students, current_price_per_student, extra1, current_subject, current_poverty, current_grade, current_metro, current_resource);
+       getAndDrawChance(current_school, current_teacher, current_month, current_price, current_students, current_price_per_student, current_state, current_subject, current_poverty, current_grade, current_metro, current_resource);
      }); 
     
     $("#resourceSelect")
@@ -279,7 +359,7 @@
        current_resource = $(this).val();
        var resource_name = $("#resourceSelect option:selected").text()
        document.getElementById("resource").textContent=resource_name;
-       getAndDrawChance(current_school, current_teacher, current_month, current_price, current_students, current_price_per_student, extra1, current_subject, current_poverty, current_grade, current_metro, current_resource);
+       getAndDrawChance(current_school, current_teacher, current_month, current_price, current_students, current_price_per_student, current_state, current_subject, current_poverty, current_grade, current_metro, current_resource);
      }); 
     
     
@@ -288,7 +368,7 @@
        current_subject = $(this).val();
        var subject_name = $("#subjectSelect option:selected").text();
        document.getElementById("subject").textContent=subject_name;
-       getAndDrawChance(current_school, current_teacher, current_month, current_price, current_students, current_price_per_student, extra1, current_subject, current_poverty, current_grade, current_metro, current_resource);
+       getAndDrawChance(current_school, current_teacher, current_month, current_price, current_students, current_price_per_student, current_state, current_subject, current_poverty, current_grade, current_metro, current_resource);
      });
        
      <!-- SLIDERS -->
@@ -304,7 +384,7 @@
              	d3.select('#school').text(value);
              	current_school = value;
              	current_price_per_student = current_price / current_students;
-       			getAndDrawChance(current_school, current_teacher, current_month, current_price, current_students, current_price_per_student, extra1, current_subject, current_poverty, current_grade, current_metro, current_resource);
+       getAndDrawChance(current_school, current_teacher, current_month, current_price, current_students, current_price_per_student, current_state, current_subject, current_poverty, current_grade, current_metro, current_resource);
            })
        )
        
@@ -320,7 +400,7 @@
              	d3.select('#teacher').text(value);
              	current_teacher = value;
              	current_price_per_student = current_price / current_students;
-       			getAndDrawChance(current_school, current_teacher, current_month, current_price, current_students, current_price_per_student, extra1, current_subject, current_poverty, current_grade, current_metro, current_resource);
+       getAndDrawChance(current_school, current_teacher, current_month, current_price, current_students, current_price_per_student, current_state, current_subject, current_poverty, current_grade, current_metro, current_resource);
            })
        )
        
@@ -336,7 +416,7 @@
         		d3.select('#month').text(value);
              	current_month = value;
              	current_price_per_student = current_price / current_students;
-       			getAndDrawChance(current_school, current_teacher, current_month, current_price, current_students, current_price_per_student, extra1, current_subject, current_poverty, current_grade, current_metro, current_resource);
+       getAndDrawChance(current_school, current_teacher, current_month, current_price, current_students, current_price_per_student, current_state, current_subject, current_poverty, current_grade, current_metro, current_resource);
        		})
        )
      
@@ -352,7 +432,7 @@
             	d3.select('#price').text(value);
             	current_price = value;
             	current_price_per_student = current_price / current_students;
-       			getAndDrawChance(current_school, current_teacher, current_month, current_price, current_students, current_price_per_student, extra1, current_subject, current_poverty, current_grade, current_metro, current_resource);
+       getAndDrawChance(current_school, current_teacher, current_month, current_price, current_students, current_price_per_student, current_state, current_subject, current_poverty, current_grade, current_metro, current_resource);
            })
        )
      
@@ -368,7 +448,7 @@
              	d3.select('#students').text(value);
              	current_students = value;
              	current_price_per_student = current_price / current_students;
-       			getAndDrawChance(current_school, current_teacher, current_month, current_price, current_students, current_price_per_student, extra1, current_subject, current_poverty, current_grade, current_metro, current_resource);
+       getAndDrawChance(current_school, current_teacher, current_month, current_price, current_students, current_price_per_student, current_state, current_subject, current_poverty, current_grade, current_metro, current_resource);
            })
        )
        
