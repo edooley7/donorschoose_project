@@ -39,7 +39,7 @@
        margin-bottom: 0px;
      }
      #bar_chart {
-       margin-bottom: 0 px;
+       margin-bottom: 0px;
      }
      .bar {
        fill: #f36f21;
@@ -49,6 +49,15 @@
      }
      span2 {
        color: #f36f21;
+     }
+     textarea { 
+       font-size: 18px; 
+       font-family: Verdana,Arial,sans-serif;
+     }
+     .mysubmitbutton {
+       font-size: 18px;
+       font-family: Verdana,Arial,sans-serif;
+
      }
     </style>
   </head>
@@ -209,7 +218,7 @@
     <div id = "text" class = "wrapper">
 		<h2> Want to improve your chances of getting funded? A great essay can help.</h>
 		<h2> Here's what some other teachers with projects similar to yours wrote to get funded:</h>
-		<h1 id="neighbor_text"></h1>
+		<h1 id="neighbor_text">Placeholder</h1>
 		<h2> Readability score: <span id="neighbor_readability">10</span></h2>
 	</div>
 
@@ -217,7 +226,7 @@
 	
 	<h2>See how your essay compares:</h2>
 	<div><textarea id="userEssay" name="user_essay" style="width: 800px;height: 300px"></textarea></div>
-	<div><button id="submitEssay">Submit</button></div>
+	<div><button class="mysubmitbutton" id="submitEssay">Submit</button></div>
 	
 	<h2> Readability score: <span id="essay_readability">12</span></h2>
 	<h2><span2 id = "response"> You've improved your chance of getting funded! Good luck!</span2></h2>
