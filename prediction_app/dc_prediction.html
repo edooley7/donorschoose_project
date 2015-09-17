@@ -23,7 +23,7 @@
 
      }
      #right_side {
-		float: right;
+		margin-left: 460px;
 
      }
 	.table{
@@ -228,7 +228,7 @@
 		<h2> Want to improve your chances of getting funded? A great essay can help.</h>
 		<h2> Here's what a teacher with a project similar to yours wrote to get funded:</h>
 		<h1 id="neighbor_text">(blank)</h1>
-		<h2> Positivity: <span id="neighbor_positivity">(blank)</span></h2>
+		<h2> Positivity score: <span id="neighbor_positivity">(blank)</span></h2>
 		<h2> Readability score: <span id="neighbor_readability">(blank)</span></h2>
 
 	</div>
@@ -236,12 +236,13 @@
 <div id="textbox" class="wrapper">	
 	
 	<h2>See how your essay compares:</h2>
-	<div><textarea id="userEssay" name="user_essay" style="width: 800px;height: 300px"></textarea></div>
+	<div><textarea type="text" id="input_a" name="user_essay" style="width: 800px;height: 300px"></textarea></div>
 	<div><button class="mysubmitbutton" id="submitEssay">Submit</button></div>
+<input class="mysubmitbutton" type="submit" name="a" value="Sample" onclick="setInput(this); return false;"> 
 	
-	<h2> Positivity: <span id="essay_positivity">(blank)</span></h2>
+	<h2> Positivity score: <span id="essay_positivity">(blank)</span></h2>
 	<h2> Readability score: <span id="essay_readability">(blank)</span></h2>
-	<h2><span2 id = "response"> You've improved your chance of getting funded! Good luck!</span2></h2>
+	<h2><span2 id = "response"> (blank)</span2></h2>
 
 </div>
 
@@ -293,9 +294,16 @@
         
      <!-- END GLOBAL VARIABLES -->
      
+     var Text = 'This is the best essay ever.  My project is definitely going to get funded.';
+function setInput(button) {
+   var buttonVal = button.name,
+   textbox = document.getElementById('input_' + buttonVal);
+   textbox.value = Text ;
+}
+     
      $( document ).ready(function() {
 		$("#submitEssay").click(function() {
-			var essay = $("#userEssay").val();
+			var essay = $("#input_a").val();
 		
 			$.ajax({
 				 type: "POST",
@@ -308,13 +316,12 @@
                  	$("#essay_readability").html(data.readability);
                  	 $("#essay_positivity").html(data.polarity);
                  	 var neighbor_polarity = $("#neighbor_positivity").html();
-                 	 alert(neighbor_polarity);
                  	 if (parseFloat(data.polarity) > parseFloat(neighbor_polarity)) {
-                 	 var good_response = "You've improved your chances!";
+                 	 var good_response = "You've improved your chances of getting funded! Good luck!";
                  	  $("#response").html(good_response);
                  	  }
                  	  else {
-                 	  var bad_response = "You can do better.";
+                 	  var bad_response = "Good job. Can you write something even better?";
                  	   $("#response").html(bad_response); 
                  	   }
 				 },
