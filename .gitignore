@@ -1,4 +1,4 @@
-prediction_app/static
+prediction_app/static/
 data_files/
 .idea/
 .ipynb_checkpoints/
