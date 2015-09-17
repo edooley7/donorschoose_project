@@ -68,6 +68,7 @@ merged = merged[['_projectid',
                  'resource_type_Visitors',
                  'RESP',
                  ' essay']]
+
 print "writing to csv"
 merged.to_csv("../prediction_app/static/merged_data.csv", index=False)
 print "DONE"
