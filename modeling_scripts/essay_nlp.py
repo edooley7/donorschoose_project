@@ -2,7 +2,7 @@ from __future__ import division
 import numpy as np
 import pandas as pd
 
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 pd.options.mode.chained_assignment = None
 from sklearn.metrics import confusion_matrix
@@ -21,7 +21,7 @@ print "done decoding"
 documents = essay_df.new_essay.tolist()
 classes = essay_df.RESP.tolist()
 
-vectorizer = TfidfVectorizer(stop_words="english", ngram_range=(1,2))
+vectorizer = CountVectorizer(stop_words="english", ngram_range=(1,2))
 doc_vectors = vectorizer.fit_transform(documents)
 print "done vectorizing" \
       ""
