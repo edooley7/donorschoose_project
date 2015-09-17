@@ -1,5 +1,2 @@
-.idea/
-.ipynb_checkpoints/
+prediction_app/static
 data_files/
-prediction_app/static/
-ignore/
