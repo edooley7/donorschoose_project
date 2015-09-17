@@ -1,15 +1,18 @@
 import flask
 import numpy as np
 import pandas as pd
-import pickle
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KDTree
+from readcalc import readcalc
+from textblob import TextBlob
+import os
 
 #---------- MODEL IN MEMORY ----------------#
 
-df = pd.DataFrame(pickle.load(open('static/dummied_recent_data.pkl', 'rb')))
-essay_df = pd.read_csv("static/cleaned_essays.csv")
+df = pd.read_csv("static/merged_data.csv")
+completed_df = df[df.RESP == 1]
+essay_df = df[['_projectid', ' essay']]
 
 X = df[[
  'school_previous_projects',
@@ -68,11 +71,11 @@ X = df[[
  'resource_type_Visitors']]
 Y = df[['RESP']]
 Y = np.ravel(Y)
-PREDICTOR = LogisticRegression().fit(X, Y)
-#PREDICTOR = DecisionTreeClassifier(max_depth = 4, class_weight = "auto" ).fit(X, Y)
+#PREDICTOR = LogisticRegression().fit(X, Y)
+PREDICTOR = DecisionTreeClassifier(max_depth = 8, class_weight = "auto" ).fit(X, Y)
 
 
-lookup = df[[
+lookup = completed_df[[
  '_projectid',
  'school_previous_projects',
  'teacher_previous_projects',
@@ -189,59 +192,42 @@ tree = KDTree(lookup[collist], metric = "chebyshev")
 
 
 #---------- URLS AND WEB PAGES -------------#
-
-# Initialize the app
 app = flask.Flask(__name__)
 
-# Homepage
 @app.route("/")
 def viz_page():
-    """
-    Homepage: serve our visualization page
-    """
     with open("dc_prediction.html", 'r') as viz_file:
         return viz_file.read()
 
-# Get an example and return it's score from the predictor model
 @app.route("/score", methods=["POST"])
 def score():
-    """
-    When A POST request with json data is made to this uri,
-    Read the example from the json, predict probability and
-    send it with a response
-    """
-    # Get decision score for our example that came with the request
     data = flask.request.json
-    # data["example"] needs to be length 54
-    #x = np.matrix("5.270380747855014,2.23606797749979,38.898,334846.0,85457.0,3.918298091437799,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,22.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0]")
     x = np.matrix(data["example"])
-    print data["example"]
     score = PREDICTOR.predict_proba(x)
-    dist, ind = tree.query(data["example"], k=1)
-    new = lookup.reset_index(drop=True)
-    proj_id = new.ix[ind[0][0]]['_projectid']
-    print proj_id
+    dist, ind = tree.query(data["example"], k=2)
+    proj_id = essay_df.ix[ind[0][0]]['_projectid']
     essay_text = pd.DataFrame(essay_df[' essay'].loc[essay_df['_projectid'] == proj_id])
-    print essay_text
     text = essay_text[' essay'].values[0]
-    user_readability = len(text)
-    # Put the result in a nice dict so we can send it as json
-    results = {"score": score[0][1], "project_text": text, "user_readability": user_readability }
+    calc = readcalc.ReadCalc(text)
+    polarity = TextBlob(text).polarity
+    polarity = round(polarity*10,1)
+    user_readability = round(calc.get_ari_index(),1)
+    results = {"score": score[0][1], "project_text": text, "user_readability": user_readability, "neighbor_polarity": polarity }
     return flask.jsonify(results)
 
 @app.route("/grade_essay", methods=["POST"])
 def grade_essay():
-    # Get decision score for our example that came with the request
     data = flask.request.json
-    #print data["example"]
-    print data["essay"]
-    essay_len = len(data["essay"])
-    print essay_len
-    results = {"readability": essay_len}
+    calc = readcalc.ReadCalc(data["essay"])
+    ari_score = round(calc.get_ari_index(),2)
+    polarity = TextBlob(data["essay"]).polarity
+    polarity = round(polarity*10,1)
+    results = {"readability": ari_score, "polarity": polarity }
     return flask.jsonify(results)
     
 #--------- RUN WEB APP SERVER ------------#
-
-# Start the app server on port 5000 (change to 80 when loaded to AWS?)
-# (The default website port)
-app.run(host='0.0.0.0', port=5000)
+#app.run(host='0.0.0.0', port=80)
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
+  

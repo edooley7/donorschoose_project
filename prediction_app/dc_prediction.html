@@ -20,12 +20,15 @@
      }
      #left_side {
 		float: left;
+
      }
      #right_side {
 		float: right;
+
      }
 	.table{
 		display: table;
+		width: 800px;
 		margin-left: auto;
         margin-right: auto;
 	 }
@@ -65,94 +68,8 @@
 <body>
 
 <div class = "table">
-    <div id="sliders" class="wrapper">
-      <h2 class="feature">Total price of project: <span id="price">500</span></h2>
-      <div id="price_slider"></div>
-
-      <h2 class="feature">Number of students reached: <span id="students">95</span></h2>
-      <div id="students_slider"></div>
-      
-      <h2 class="feature">Month: <span id="month">1</span></h2>
-      <div id="month_slider"></div>
-
-      <h2 class="feature">Number of previous projects by school: <span id="school">1</span></h2>
-      <div id="school_slider"></div>
-      
-      <h2 class="feature">Number of previous projects by teacher: <span id="teacher">1</span></h2>
-      <div id="teacher_slider"></div>
-	</div>
-	
-    <div id = "left_side">    
-      <h2>Subject: <span id="subject">Applied Sciences</span></h2>
-      <select id="subjectSelect">
-      	<option value="1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Applied Sciences</option>
-      	<option value="0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Character Education</option>
-      	<option value="0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Civics & Government</option>
-      	<option value="0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">College & Career Prep</option>
-      	<option value="0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Community Service</option>
-      	<option value="0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">ESL</option>
-      	<option value="0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Early Development</option>
-      	<option value="0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Economics</option>
-      	<option value="0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Environmental Science</option>
-      	<option value="0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Extracurricular</option>
-      	<option value="0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Financial Literacy</option>
-      	<option value="0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Foreign Languages</option>
-      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Gym & Fitness</option>
-      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Health & Life Science</option>
-      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0">Health & Wellness</option>
-      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0">History & Geography</option>
-      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0">Literacy</option>
-      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0">Literature & Writing</option>
-      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0">Mathematics</option>
-      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0">Music</option>
-      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0">Nutrition</option>
-      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0">Other</option>
-      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0">Parent Involvement</option>
-      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0">Performing Arts</option>
-      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0">Social Sciences</option>
-      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0">Special Needs</option>
-      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0">Team Sports</option>
-      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1">Visual Arts</option>
-	  </select>
-
-    
-      <h2>Poverty level of school: <span id="poverty">Highest Poverty</span></h2>
-      <select id="povertySelect">
-      	<option value="0,1,0,0">Highest Poverty</option>
-      	<option value="1,0,0,0">High Poverty</option>
-      	<option value="0,0,0,1">Moderate Poverty</option>
-      	<option value="0,0,1,0">Low Poverty</option>
-	  </select>
-
-
-      <h2>Grade Level: <span id="grade">Grades Pre K-2</span></h2>
-      <select id="gradeSelect">
-        <option value="0,0,0,1">Grades Pre K-2</option>
-      	<option value="1,0,0,0">Grades 3-5</option>
-      	<option value="0,1,0,0">Grades 6-8</option>
-      	<option value="0,0,1,0">Grades 9-12</option>
-      </select>
-	</div>
-    	 
-    <div id = "right_side">    
-      <h2>School metro area: <span id="metro">Urban</span></h2>
-      <select id="metroSelect">
-        <option value="0,0,1">Urban</option>
-      	<option value="0,1,0">Suburban</option>
-      	<option value="1,0,0">Rural</option>
-      </select>
-      
-      <h2>Resource Type: <span id="resource">Books</span></h2>
-      <select id="resourceSelect">
-        <option value="1,0,0,0,0,0">Books</option>
-      	<option value="0,0,1,0,0,0">Supplies</option>
-      	<option value="0,0,0,1,0,0">Technology</option>
-      	<option value="0,0,0,0,1,0">Trips</option>
-      	<option value="0,0,0,0,0,1">Visitors</option>
-      	<option value="0,1,0,0,0,0">Other</option>
-      </select>
-      
-      <h2>State: <span id="state">AK</span></h2>
+	<div id = "left_side">    
+	 <h2>State: <span id="state">AK</span></h2>
       <select id="stateSelect">
         <option value="8185,2065,3.96368038741">AK</option>
 		<option value="28333,8000,3.541625">AL</option>
@@ -206,20 +123,114 @@
 		<option value="12952,3116,4.15661103979">WV</option>
 		<option value="2588,553,4.67992766727">WY</option>
       </select>
+      
+        <h2>School metro area: <span id="metro">Urban</span></h2>
+      <select id="metroSelect">
+        <option value="0,0,1">Urban</option>
+      	<option value="0,1,0">Suburban</option>
+      	<option value="1,0,0">Rural</option>
+      </select>
+
+
+    
+      <h2>School income level: <span id="poverty">Very low income</span></h2>
+      <select id="povertySelect">
+      	<option value="0,1,0,0">Very low income</option>
+      	<option value="1,0,0,0">Low income</option>
+      	<option value="0,0,0,1">Moderate income</option>
+      	<option value="0,0,1,0">High income</option>
+	  </select>
+
+
+
+	</div>
+    	 
+    <div id = "right_side">    
+       <h2>Grade Level: <span id="grade">Grades Pre K-2</span></h2>
+      <select id="gradeSelect">
+        <option value="0,0,0,1">Grades Pre K-2</option>
+      	<option value="1,0,0,0">Grades 3-5</option>
+      	<option value="0,1,0,0">Grades 6-8</option>
+      	<option value="0,0,1,0">Grades 9-12</option>
+      </select>
+         
+    <h2>Subject: <span id="subject">Applied Sciences</span></h2>
+      <select id="subjectSelect">
+      	<option value="1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Applied Sciences</option>
+      	<option value="0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Character Education</option>
+      	<option value="0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Civics & Government</option>
+      	<option value="0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">College & Career Prep</option>
+      	<option value="0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Community Service</option>
+      	<option value="0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">ESL</option>
+      	<option value="0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Early Development</option>
+      	<option value="0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Economics</option>
+      	<option value="0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Environmental Science</option>
+      	<option value="0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Extracurricular</option>
+      	<option value="0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Financial Literacy</option>
+      	<option value="0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Foreign Languages</option>
+      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Gym & Fitness</option>
+      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0">Health & Life Science</option>
+      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0">Health & Wellness</option>
+      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0">History & Geography</option>
+      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0">Literacy</option>
+      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0">Literature & Writing</option>
+      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0">Mathematics</option>
+      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0">Music</option>
+      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0">Nutrition</option>
+      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0">Other</option>
+      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0">Parent Involvement</option>
+      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0">Performing Arts</option>
+      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0">Social Sciences</option>
+      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0">Special Needs</option>
+      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0">Team Sports</option>
+      	<option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1">Visual Arts</option>
+	  </select>
+	  
+      <h2>Resource Type: <span id="resource">Books</span></h2>
+      <select id="resourceSelect">
+        <option value="1,0,0,0,0,0">Books</option>
+      	<option value="0,0,1,0,0,0">Supplies</option>
+      	<option value="0,0,0,1,0,0">Technology</option>
+      	<option value="0,0,0,0,1,0">Trips</option>
+      	<option value="0,0,0,0,0,1">Visitors</option>
+      	<option value="0,1,0,0,0,0">Other</option>
+      </select>
+      
     </div>
-</div>
+ </div>  
+ 
+    <div id="sliders" class="wrapper">
+      <h2 class="feature">Month: <span id="month">1</span></h2>
+      <div id="month_slider"></div>
+    
+      <h2 class="feature">Number of previous projects by school: <span id="school">0</span></h2>
+      <div id="school_slider"></div>
+      
+      <h2 class="feature">Number of previous projects by teacher: <span id="teacher">0</span></h2>
+      <div id="teacher_slider"></div>
+      
+      <h2 class="feature">Number of students reached: <span id="students">95</span></h2>
+      <div id="students_slider"></div>
+      
+      <h2 class="feature">Total price of project: <span id="price">500</span></h2>
+      <div id="price_slider"></div>
+
+	</div>
+ 
 
     <div id="chart_area" class="wrapper">
-      <h2>Will my project get funded?</h2>
+      <h2>Probability your project will get funded:</h2>
       <div id="bar_chart">
       </div>
     </div>
     
     <div id = "text" class = "wrapper">
 		<h2> Want to improve your chances of getting funded? A great essay can help.</h>
-		<h2> Here's what some other teachers with projects similar to yours wrote to get funded:</h>
-		<h1 id="neighbor_text">Placeholder</h1>
-		<h2> Readability score: <span id="neighbor_readability">10</span></h2>
+		<h2> Here's what a teacher with a project similar to yours wrote to get funded:</h>
+		<h1 id="neighbor_text">(blank)</h1>
+		<h2> Positivity: <span id="neighbor_positivity">(blank)</span></h2>
+		<h2> Readability score: <span id="neighbor_readability">(blank)</span></h2>
+
 	</div>
 
 <div id="textbox" class="wrapper">	
@@ -228,14 +239,15 @@
 	<div><textarea id="userEssay" name="user_essay" style="width: 800px;height: 300px"></textarea></div>
 	<div><button class="mysubmitbutton" id="submitEssay">Submit</button></div>
 	
-	<h2> Readability score: <span id="essay_readability">12</span></h2>
+	<h2> Positivity: <span id="essay_positivity">(blank)</span></h2>
+	<h2> Readability score: <span id="essay_readability">(blank)</span></h2>
 	<h2><span2 id = "response"> You've improved your chance of getting funded! Good luck!</span2></h2>
 
 </div>
 
     <!-- Import the libraries: jQuery, d3, d3.slider -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="static/d3.v3.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="static/d3.slider.js"></script>
 
     <script>
@@ -244,9 +256,9 @@
      var current_month = 1
      var current_price = 500;
      var current_students = 95;
-     var current_risk = 76.0;
-     var current_school = 1;
-     var current_teacher = 1;
+     var current_risk = 0.0;
+     var current_school = 0;
+     var current_teacher = 0;
      var current_poverty = $("#povertySelect").val();
      var current_grade = $("#gradeSelect").val();
      var current_metro = $("#metroSelect").val();
@@ -294,6 +306,17 @@
 				 data: "{\"essay\": \"" + essay + "\", \"example\": ["+current_school+", "+current_teacher+", "+current_month+", "+current_price+","+current_students+","+current_price_per_student+", "+current_state+", "+current_subject+", "+current_poverty+", "+current_grade+", "+current_metro+", "+current_resource+"]}",
 				 success: function (data) {
                  	$("#essay_readability").html(data.readability);
+                 	 $("#essay_positivity").html(data.polarity);
+                 	 var neighbor_polarity = $("#neighbor_positivity").html();
+                 	 alert(neighbor_polarity);
+                 	 if (parseFloat(data.polarity) > parseFloat(neighbor_polarity)) {
+                 	 var good_response = "You've improved your chances!";
+                 	  $("#response").html(good_response);
+                 	  }
+                 	  else {
+                 	  var bad_response = "You can do better.";
+                 	   $("#response").html(bad_response); 
+                 	   }
 				 },
 				error: function (result) {alert('Please leave out line breaks') }
 			   })
@@ -303,9 +326,7 @@
          
 	<!-- FUNCTION TO GET CHANCE FROM YOUR PREDICTOR WITH AJAX AND CHANGE BAR  HEIGHT -->
 	function getAndDrawChance(school, teacher, month, price, students, price_per_student, state, subject, poverty, grade, metro, resource) {
-
-       var students = Math.sqrt(students);
-       
+		var students = Math.sqrt(students);
        var price = current_price * 1.15;
 	   price = Math.log(price);
        
@@ -319,6 +340,7 @@
          success: function (data) {
           $("#neighbor_text").html(data.project_text);
           $("#neighbor_readability").html(data.user_readability);
+          $("#neighbor_positivity").html(data.neighbor_polarity);
 
            var chance = 100 * data["score"];
            d3.select("#chancebar")
